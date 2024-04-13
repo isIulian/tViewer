@@ -1,3 +1,19 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.resource-type-card {
+  background-image: linear-gradient(
+    60deg,
+    hsl(245deg 44% 36%) 0%,
+    hsl(283deg 46% 37%) 23%,
+    hsl(313deg 53% 41%) 37%,
+    hsl(330deg 60% 49%) 49%,
+    hsl(343deg 78% 58%) 59%,
+    hsl(359deg 98% 67%) 69%,
+    hsl(16deg 100% 63%) 78%,
+    hsl(31deg 100% 59%) 86%,
+    hsl(43deg 100% 53%) 94%,
+    hsl(55deg 88% 50%) 100%
+  );
+}

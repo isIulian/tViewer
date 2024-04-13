@@ -18,7 +18,7 @@ async function getResources (type, search) {
 async function getPagedResources (type, search, page = 1) {
     console.log("fetch paged resources");
     let resources = resourcesStore;
-    if (type !== undefined) {
+    if (type !== undefined && !isNaN(type)) {
         resources = resources.filter((resource) => resource.type === type);
     }
     if (search !== "") {

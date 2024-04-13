@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import resourceService from "/src/services/resourcesService.js";
 import { ResourceCard } from "../../components/ResourceCard/ResourceCard";
+import resourceTypeService from "../../services/resourceTypeService";
+import { ResourceTypeCard } from "./components/ResourceTypeCard";
 
 const Home = function () {
   const [resources, setResources] = useState([]);
+  const [resourceTypes, setResourceTypes] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,8 +15,10 @@ const Home = function () {
       setIsLoading(true);
       try {
         const data = await resourceService.getResources();
+        const loadedResourceTypes = await resourceTypeService.getTypes();
         let fetchedResources = data.slice(0, 25);
         setResources(fetchedResources);
+        setResourceTypes(loadedResourceTypes);
         setError(null);
       } catch (error) {
         setError(error);
@@ -34,16 +39,15 @@ const Home = function () {
   }
 
   return (
-    <div className='space-y-6'>
-    <div className='w-full'>
-      <h1 className='text-xl font-light tracking-wide'>{resources.length}</h1>
-    </div>
-    <div className='grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-    {resources.map((resource) => (
-          <ResourceCard key={resource.id} resource={resource} />
-        ))}
-    </div>
-  </div>
+    <>
+      <section className="container mx-auto p-10 md:py-20 px-0 md:p-20 md:px-0 antialiased">
+        <section className="grid lg:grid-cols-2 2xl:grid-cols-3 grid-cols-1 gap-20 ">
+          {resourceTypes.map((type) => (
+            <ResourceTypeCard key={type.id} type={type} />
+          ))}
+        </section>
+      </section>
+    </>
   );
 };
 

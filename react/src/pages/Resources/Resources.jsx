@@ -7,6 +7,7 @@ import resourceService from "/src/services/resourcesService.js";
 import { ResourceCard } from "/src/components/ResourceCard/ResourceCard";
 import { Search } from "./components/Search";
 import { smallMaxWidth } from "/src/styles";
+import resourceTypeService from "../../services/resourceTypeService";
 
 const Resources = () => {
   const [page, setPage] = useState(1);
@@ -22,8 +23,11 @@ const Resources = () => {
 
   useEffect(() => {
     const loadResources = async () => {
+
+      let resourceType = await resourceTypeService.getTypeByName(type);
+
       let pagedResult = await resourceService.getPagedResources(
-        type,
+        resourceType.id,
         searchQuery,
         page
       );

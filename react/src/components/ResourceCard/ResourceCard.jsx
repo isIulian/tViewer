@@ -14,7 +14,7 @@ function ResourceCard({ resource }) {
           width={170}
           src={resource.fallbackCovers[0]}
           alt={resource.title}
-          className="object-cover rounded-lg drop-shadow-md shadow-md group-hover:shadow-none group-hover:drop-shadow-none transition-all duration-300 ease-in-out"
+          className="object-cover h-full w-full rounded-lg drop-shadow-md shadow-md group-hover:shadow-none group-hover:drop-shadow-none transition-all duration-300 ease-in-out"
         />
       </Link>
       <div className="grid gap-1">

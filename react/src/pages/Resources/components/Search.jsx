@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { GoSearch } from "react-icons/go";
 
-const Search = (setQuery) => {
+const Search = ({ setQuery }) => {
   const [search, setSearch] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!search) return;
     setQuery({ search });
-    setSearch("");
+    //setSearch("");
   };
 
   return (

@@ -11,10 +11,10 @@ const HeaderNavItem = (pageLink, isNotFoundPage) => {
           return cn(
             "nav-link font-bold",
             isActive
-              ? `active text-elegantViolet-800 underline`
+              ? `active text-elegantViolet-900 underline`
               : ` ${
                   isNotFoundPage
-                    ? "text-elegantViolet-400 dark:hover:text-secColor hover:underline hover:text-elegantViolet-900"
+                    ? "text-gray-500 dark:hover:text-secColor hover:underline hover:text-elegantViolet-900"
                     : "hover:text-text-elegantViolet-900"
                 }`
           );

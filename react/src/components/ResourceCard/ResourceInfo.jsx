@@ -1,9 +1,8 @@
-import React from 'react'
-
-function ResourceInfo ({ info }) {
+function ResourceInfo (info) {
+  let data = info.info;
   return (
     <>
-      <p className='truncate tracking-wide'>{info.title}</p>
+      <p className='truncate tracking-wide text-gray-900'>{data.name}</p>
     </>
   )
 }

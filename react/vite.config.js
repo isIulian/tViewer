@@ -7,7 +7,9 @@ export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   const baseUrl = env.VITE_BASE;
   return defineConfig({
-    plugins: [react()],
+    plugins: [
+      react()
+    ],
     base: baseUrl
   })
 };

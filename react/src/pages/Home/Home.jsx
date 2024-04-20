@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import resourceService from "/src/services/resourcesService.js";
+import resourceService from "@/services/resourcesService.js";
 import { ResourceCard } from "../../components/ResourceCard/ResourceCard";
 import resourceTypeService from "../../services/resourceTypeService";
 import { ResourceTypeCard } from "./components/ResourceTypeCard";

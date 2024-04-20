@@ -1,4 +1,4 @@
-import data from "/src/data/data.json";
+import data from "@/data/data.json";
 
 let resourceTypesStore = data.types;
 

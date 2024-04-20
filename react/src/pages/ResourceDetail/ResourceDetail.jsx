@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import resourceService from "/src/services/resourcesService.js";
+import resourceService from "@/services/resourcesService.js";
 
 const ResourceDetail = () => {
   const [resourceDetail, setResourceDetail] = useState(null);

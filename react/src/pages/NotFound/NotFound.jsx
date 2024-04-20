@@ -1,4 +1,4 @@
-import illustration from '/src/assets/svg/undraw_not_found.svg';
+import illustration from '@/assets/svg/undraw_not_found.svg';
 
 const NotFound = function () {
     return (

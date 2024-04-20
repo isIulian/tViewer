@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-import resourceService from "/src/services/resourcesService.js";
+import resourceService from "@/services/resourcesService.js";
 
-import { ResourceCard } from "/src/components/ResourceCard/ResourceCard";
+import { ResourceCard } from "@/components/ResourceCard/ResourceCard";
 import { Search } from "./components/Search";
-import { smallMaxWidth } from "/src/styles";
+import { smallMaxWidth } from "@/styles";
 import resourceTypeService from "../../services/resourceTypeService";
 
 const Resources = () => {
@@ -70,7 +70,6 @@ const Resources = () => {
             Load more
           </button>
         </div>
-
       </section>
     </>
   );

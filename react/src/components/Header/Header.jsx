@@ -3,8 +3,8 @@ import { useLocation } from "react-router-dom";
 
 import HeaderNavItem from "./HeaderNavItem";
 
-import { maxWidth } from "/src/styles";
-import { cn } from "/src/utils/utils.js";
+import { maxWidth } from "@/styles";
+import { cn } from "@/lib/utils.js";
 
 const navLinks = [
   {

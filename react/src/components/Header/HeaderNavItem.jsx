@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { cn } from "/src/utils/utils";
+import { cn } from "@/lib/utils";
 
 const HeaderNavItem = (pageLink, isNotFoundPage) => {
   let link = pageLink.link;

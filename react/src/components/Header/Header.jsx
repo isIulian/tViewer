@@ -26,6 +26,10 @@ const navLinks = [
   {
     title: "follow",
     path: "/tracks/",
+  },
+  {
+    title: "dash",
+    path: "/dashboard/",
   }
 ];
 

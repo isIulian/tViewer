@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import resourceService from "@/services/resourcesService.js";
 
-import { ResourceCard } from "@/components/ResourceCard/ResourceCard";
+import { ResourceCard } from "@/pages/Resources/components/ResourceCard";
 import { TrackList } from "./components/TrackList";
 import { smallMaxWidth } from "@/styles";
 import resourceTypeService from "../../services/resourceTypeService";

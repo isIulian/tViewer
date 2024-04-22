@@ -32,7 +32,7 @@ async function getPagedResources (type, search, page = 1) {
     let skipOffset = (page - 1) * pageSize;
     let result = resources.slice(skipOffset, skipOffset + pageSize);
     let pagedResult = {
-        totalPages: resources.length / pageSize,
+        totalPages: Math.ceil(resources.length / pageSize),
         currentPage: page,
         items: result
     };

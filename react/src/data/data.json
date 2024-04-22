@@ -1,4 +1,71 @@
 {
+    "report": {
+        "resourcesCount": 401,
+        "resourcesTypes": [
+            {
+                "label": "movie",
+                "value": 16
+            },
+            {
+                "label": "tv-show",
+                "value": 240
+            },
+            {
+                "label": "Comics",
+                "value": 145
+            }
+        ],
+        "overview": [
+            {
+              "label": "Jan",
+              "value": 10
+            },
+            {
+              "label": "Feb",
+              "value": 15
+            },
+            {
+              "label": "Mar",
+              "value": 12
+            },
+            {
+              "label": "Apr",
+              "value": 50
+            },
+            {
+              "label": "May",
+              "value": 60
+            },
+            {
+              "label": "Jun",
+              "value": 12
+            },
+            {
+              "label": "Jul",
+              "value": 16
+            },
+            {
+              "label": "Aug",
+              "value": 43
+            },
+            {
+              "label": "Sep",
+              "value": 43
+            },
+            {
+              "label": "Oct",
+              "value": 15
+            },
+            {
+              "label": "Nov",
+              "value": 21
+            },
+            {
+              "label": "Dec",
+              "value": 75
+            }
+          ]
+    },
     "tracks": [
         {}
     ],

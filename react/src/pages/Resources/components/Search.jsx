@@ -1,5 +1,10 @@
+import { Input } from '@/components/ui/input'
 import { useState } from "react";
-import { GoSearch } from "react-icons/go";
+import {
+  IconSearch,
+} from '@tabler/icons-react'
+
+  
 
 const Search = ({ setQuery }) => {
   const [search, setSearch] = useState("");
@@ -13,24 +18,25 @@ const Search = ({ setQuery }) => {
 
   return (
     <form
-      className="text-[14px] lg:py-10 md:pt-9 md:pb-10 sm:pt-8 sm:pb-10  pt-6 pb-8 flex flex-row items-center justify-center"
+      className="text-[14px] flex flex-row items-center justify-center"
       onSubmit={handleSubmit}
     >
-      <input
-        type="text"
-        className="py-[8px] pl-[20px] pr-[36px]  rounded-full outline-none w-[300px] md:w-[340px]  shadow-md transition-all duration-300 focus:shadow-sm text-[#666] focus:bg-[#ffffff] bg-[#fdfdfd] font-medium dark:bg-[#302d3a] dark:text-primary dark:focus:bg-[#474550]"
+      <Input
+        type='search'
         onChange={(e) => setSearch(e.target.value)}
+        placeholder='Search...'
         value={search}
-        placeholder={`Search`}
+        className='md:w-[100px] lg:w-[300px]'
       />
       <button
         type="submit"
-        className="text-[18px] -ml-[32px] text-elegantViolet-900 z-[1]"
+        className="-ml-[32px] z-[1]"
       >
-        <GoSearch />
+        <IconSearch />
       </button>
     </form>
   );
 };
 
 export { Search };
+

@@ -41,7 +41,7 @@ const Resources = () => {
   };
 
   useEffect(() => {
-    setQuery({ page: 1 });
+    setQuery({ page: 1, search: searchQuery });
   }, [searchQuery]);
 
   useEffect(() => {
@@ -96,6 +96,9 @@ const Resources = () => {
         }
 
         setPaginationPages(pages);
+      }
+      else {
+        setPaginationPages([]);
       }
 
       let resources = pagedResult.items;

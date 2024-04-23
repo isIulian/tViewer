@@ -5,10 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  IconSum,
-  IconPackages,
-} from "@tabler/icons-react";
+import { IconSum, IconPackages } from "@tabler/icons-react";
 
 import { Search } from "@/components/custom/search";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -25,19 +22,16 @@ export default function Dashboard() {
     <Layout>
       {/* ===== Top Heading ===== */}
       <LayoutHeader>
+        <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
+          Dashboard
+        </h1>
         <div className="ml-auto flex items-center space-x-4">
-          <Search />
           <ThemeSwitch />
         </div>
       </LayoutHeader>
 
       {/* ===== Main ===== */}
       <LayoutBody className="space-y-4">
-        <div className="flex items-center justify-between space-y-2">
-          <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
-            Dashboard
-          </h1>
-        </div>
         <Tabs
           orientation="vertical"
           defaultValue="overview"

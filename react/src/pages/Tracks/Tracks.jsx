@@ -1,54 +1,33 @@
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { columns } from "./components/columns";
+import { DataTable } from "./components/data-table";
+import { UserNav } from "./components/user-nav";
 
-import resourceService from "@/services/resourcesService.js";
+import tasks from "./data/tasks.json";
 
-import { ResourceCard } from "@/pages/Resources/components/ResourceCard";
-import { TrackList } from "./components/TrackList";
-import { smallMaxWidth } from "@/styles";
-import resourceTypeService from "../../services/resourceTypeService";
+// Simulate a database read for tasks.
+function getTasks() {
+  return tasks;
+}
 
-const Resources = () => {
-  const [page, setPage] = useState(1);
-  const [loadedResources, setLoadedResources] = useState([]);
-  const [query, setQuery] = useSearchParams();
-  const { type = "movie" } = useParams();
-
-  const searchQuery = query.get("search") || "";
-
-  useEffect(() => {
-    setPage(1);
-  }, [searchQuery]);
-
-  useEffect(() => {
-    const loadResources = async () => {
-      let resourceType = await resourceTypeService.getTypeByName(type);
-
-      let pagedResult = await resourceService.getPagedResources(
-        resourceType.id,
-        searchQuery,
-        page
-      );
-
-      let resources = pagedResult.items;
-      if (page > 1) {
-        setLoadedResources((prev) => [...prev, ...resources]);
-      } else {
-        setLoadedResources([...resources]);
-      }
-    };
-
-    loadResources();
-  }, [page, searchQuery, type]);
+export default function Tasks() {
+  const tasks = getTasks();
 
   return (
     <>
-      <section className={`${smallMaxWidth} `}>
-        <TrackList />
-      </section>
+      <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
+        <div className="flex items-center justify-between space-y-2">
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
+            <p className="text-muted-foreground">
+              Here&apos;s a list of your tasks for this month!
+            </p>
+          </div>
+          <div className="flex items-center space-x-2">
+            <UserNav />
+          </div>
+        </div>
+        <DataTable data={tasks} columns={columns} />
+      </div>
     </>
   );
-};
-
-export default Resources;
+}

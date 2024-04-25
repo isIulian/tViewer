@@ -54,6 +54,7 @@ export default function Sidebar({ className, isCollapsed, setIsCollapsed }) {
                   id="g6-9"
                   transform="matrix(0.51063831,-0.17782606,0,0.51063831,-25.177763,10.885499)"
                   fill="#1c274c"
+                  className="dark:fill-current"
                 >
                   <g id="g4-4">
                     <path
@@ -67,6 +68,7 @@ export default function Sidebar({ className, isCollapsed, setIsCollapsed }) {
                   strokeLinecap="round"
                   strokeWidth="1.5"
                   stroke="#1c274c"
+                  className="dark:stroke-current"
                   d="m 21.828763,11.807339 c 0,4.714 0,7.0711 -1.4645,8.5355 -1.4644,1.4645 -3.8215,1.4645 -8.5355,1.4645 -4.7140495,0 -7.0710695,0 -8.5355295,-1.4645 -1.46447,-1.4644 -1.46447,-3.8215 -1.46447,-8.5355 0,-4.7140495 0,-7.0710685 1.46447,-8.5355285 1.46446,-1.46447 3.82148,-1.46447 8.5355295,-1.46447 4.714,0 7.0711,0 8.5355,1.46447 0.9738,0.97374 1.3001,2.34208 1.4094,4.5355295"
                 />
               </g>

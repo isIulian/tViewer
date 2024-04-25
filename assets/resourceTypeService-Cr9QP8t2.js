@@ -1,1 +1,0 @@
-import{d as s}from"./data-XFSb1QIA.js";let n=s.types;async function o(){return n}async function u(t){let e=n;return e=e.filter(r=>r.id===t),e.length===0?null:e[0]}async function y(t){let e=n;return e=e.filter(r=>r.name.toLowerCase()===t.toLowerCase()),e.length===0?null:e[0]}const l={getTypes:o,getType:u,getTypeByName:y};export{l as r};

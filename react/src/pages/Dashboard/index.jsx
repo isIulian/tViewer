@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/card";
 import { IconSum, IconPackages } from "@tabler/icons-react";
 
-import { Search } from "@/components/custom/search";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ThemeSwitch from "@/components/layout/theme-switch";
 import { Layout, LayoutBody, LayoutHeader } from "@/components/layout/layout";
@@ -16,8 +15,25 @@ import { RecentAdditions } from "./components/recent-additions";
 import { Overview } from "./components/overview";
 
 import data from "@/data/data.json";
+import analyticsService from "./services/analyticsService";
+import { useState, useEffect } from "react";
 
 export default function Dashboard() {
+  const [report, setReport] = useState(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      let reportData = await analyticsService.getReport();
+      setReport(reportData);
+    };
+
+    loadData();
+  }, []);
+
+  if (report === null) {
+    return <></>;
+  }
+
   return (
     <Layout>
       {/* ===== Top Heading ===== */}
@@ -54,16 +70,13 @@ export default function Dashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">
-                    {data.report.resourcesCount}
+                    {report.resourcesCount}
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    +20.1% from last month
-                  </p>
                 </CardContent>
               </Card>
 
-              {data.report.resourcesTypes.length > 0 ? (
-                data.report.resourcesTypes.map((typeInfo) => (
+              {report.resourcesTypes.length > 0 ? (
+                report.resourcesTypes.map((typeInfo) => (
                   <Card key={typeInfo.label}>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
@@ -81,23 +94,33 @@ export default function Dashboard() {
               )}
             </div>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-7">
-              <Card className="col-span-1 lg:col-span-4">
+              {report.overview !== null ? (
+                <>
+                  <Card className="col-span-1 lg:col-span-4">
+                    <CardHeader>
+                      <CardTitle>Overview</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pl-2">
+                      <Overview data={report.overview} />
+                    </CardContent>
+                  </Card>
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
+          </TabsContent>
+          <TabsContent value="history" className="space-y-4">
+            <div className="">
+              <Card className="">
                 <CardHeader>
-                  <CardTitle>Overview</CardTitle>
-                </CardHeader>
-                <CardContent className="pl-2">
-                  <Overview />
-                </CardContent>
-              </Card>
-              <Card className="col-span-1 lg:col-span-3">
-                <CardHeader>
-                  <CardTitle>Recent Additons</CardTitle>
+                  <CardTitle>History</CardTitle>
                   <CardDescription>
-                    New resources in the application
+                    Last 5 resources variations
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <RecentAdditions />
+                  <RecentAdditions resourcesChanges={report.history} />
                 </CardContent>
               </Card>
             </div>

@@ -1,10 +1,8 @@
-import data from "@/data/data.json";
-
-let resourcesStore = data.resources;
+import dataStorage from "@/services/dataStorage";
 
 async function getResources (type, search) {
-    console.log("fetch resources");
-    let resources = resourcesStore;
+
+    let resources = dataStorage.getData().resources;
     if (type !== undefined) {
         resources = resources.filter((resource) => resource.type === type);
     }
@@ -16,8 +14,7 @@ async function getResources (type, search) {
 }
 
 async function getPagedResources (type, search, page = 1) {
-    console.log("fetch paged resources");
-    let resources = resourcesStore;
+    let resources = dataStorage.getData().resources;
     if (type !== undefined && !isNaN(type)) {
         resources = resources.filter((resource) => resource.type === type);
     }
@@ -41,8 +38,7 @@ async function getPagedResources (type, search, page = 1) {
 }
 
 async function getResource (id) {
-    console.log("get resource");
-    let resources = resourcesStore;
+    let resources = dataStorage.getData().resources;
     resources = resources.filter((resource) => resource.id === id);
     if (resources.length === 0) {
         return null;

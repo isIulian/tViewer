@@ -7,6 +7,9 @@ import App from "./App.jsx";
 import router from '@/router'
 import "./index.css";
 
+import accountService from "./services/accountService.js";
+accountService.initializeDataStorage(); // load data for example
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">

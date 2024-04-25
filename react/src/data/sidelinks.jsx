@@ -5,6 +5,7 @@ import {
   IconMovie,
   IconDeviceTv,
   IconNotebook,
+  IconSettings
 } from '@tabler/icons-react'
 
 export const sidelinks = [
@@ -45,5 +46,11 @@ export const sidelinks = [
     label: '',
     href: '/Tracks',
     icon: <IconChartHistogram size={18} />,
+  },
+  {
+    title: 'Settings',
+    label: '',
+    href: '/settings',
+    icon: <IconSettings size={18} />,
   },
 ]

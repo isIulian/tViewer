@@ -1,13 +1,12 @@
-import data from "@/data/data.json";
-
-let resourceTypesStore = data.types;
+import dataStorage from "@/services/dataStorage";
+dataStorage.getData().resources;
 
 async function getTypes () {
-    return resourceTypesStore;
+    return dataStorage.getData().types;
 }
 
 async function getType (id) {
-    let types = resourceTypesStore;
+    let types = dataStorage.getData().types;
     types = types.filter((type) => type.id === id);
     if (types.length === 0) {
         return null;
@@ -16,7 +15,7 @@ async function getType (id) {
 }
 
 async function getTypeByName (name) {
-    let types = resourceTypesStore;
+    let types = dataStorage.getData().types;
     types = types.filter((type) => type.name.toLowerCase() === name.toLowerCase());
     if (types.length === 0) {
         return null;

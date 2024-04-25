@@ -1,12 +1,9 @@
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
-import data from "@/data/data.json";
 
-let resourcesOverview = data.report.overview;
-
-export function Overview() {
+export function Overview ({ data }) {
   return (
     <ResponsiveContainer width='100%' height={350}>
-      <BarChart data={resourcesOverview}>
+      <BarChart data={data}>
         <XAxis
           dataKey='label'
           stroke='#888888'

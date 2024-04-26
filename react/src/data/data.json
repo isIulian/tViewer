@@ -1,6 +1,40 @@
 {
     "tracks": [
-        {}
+        {
+            "id": 1,
+            "resourceId": 1,
+            "lastReadPart": "1"
+        },
+        {
+            "id": 2,
+            "resourceId": 17,
+            "lastReadPart": "12"
+        },
+        {
+            "id": 3,
+            "resourceId": 1,
+            "lastReadPart": "1"
+        },
+        {
+            "id": 4,
+            "resourceId": 1,
+            "lastReadPart": "1"
+        },
+        {
+            "id": 5,
+            "resourceId": 1,
+            "lastReadPart": "1"
+        },
+        {
+            "id": 6,
+            "resourceId": 1,
+            "lastReadPart": "1"
+        },
+        {
+            "id": 7,
+            "resourceId": 1,
+            "lastReadPart": "1"
+        }
     ],
     "types":[
         {

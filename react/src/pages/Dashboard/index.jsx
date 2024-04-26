@@ -14,7 +14,6 @@ import { Layout, LayoutBody, LayoutHeader } from "@/components/layout/layout";
 import { RecentAdditions } from "./components/recent-additions";
 import { Overview } from "./components/overview";
 
-import data from "@/data/data.json";
 import analyticsService from "./services/analyticsService";
 import { useState, useEffect } from "react";
 

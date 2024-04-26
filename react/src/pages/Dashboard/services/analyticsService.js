@@ -1,61 +1,13 @@
 import resourcesService from "@/services/resourcesService";
 import resourceTypeService from "@/services/resourceTypeService";
+import trackService from "@/services/trackService";
+import { statuses } from "@/pages/Tracks/data/data";
 
 async function getReport () {
     let report = {
         resourcesCount: 0,
-        resourcesTypes: [
-        ],
-        overview: [
-            {
-                "label": "Jan",
-                "value": 10
-            },
-            {
-                "label": "Feb",
-                "value": 15
-            },
-            {
-                "label": "Mar",
-                "value": 12
-            },
-            {
-                "label": "Apr",
-                "value": 50
-            },
-            {
-                "label": "May",
-                "value": 60
-            },
-            {
-                "label": "Jun",
-                "value": 12
-            },
-            {
-                "label": "Jul",
-                "value": 16
-            },
-            {
-                "label": "Aug",
-                "value": 43
-            },
-            {
-                "label": "Sep",
-                "value": 43
-            },
-            {
-                "label": "Oct",
-                "value": 15
-            },
-            {
-                "label": "Nov",
-                "value": 21
-            },
-            {
-                "label": "Dec",
-                "value": 75
-            }
-        ],
+        resourcesTypes: [],
+        overview: [],
         history: [
             {
                 "resource": "A",
@@ -103,6 +55,20 @@ async function getReport () {
         }
     }
     report.resourcesTypes = typesReportData;
+
+    // tracks logic
+    let tracks = await trackService.getTracks();
+    let overview = [];
+    for (const status of statuses) {
+        let tracksByStatus = tracks.filter(x => x.status === status.value);
+        overview.push(
+            {
+                "label": status.label,
+                "value": tracksByStatus.length
+            }
+        );
+    }
+    report.overview = overview;
 
     return report;
 }

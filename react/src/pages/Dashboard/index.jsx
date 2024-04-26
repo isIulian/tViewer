@@ -98,6 +98,7 @@ export default function Dashboard() {
                   <Card className="col-span-1 lg:col-span-4">
                     <CardHeader>
                       <CardTitle>Overview</CardTitle>
+                      <CardDescription>Check in which status are the resuorces that you are tracking</CardDescription>
                     </CardHeader>
                     <CardContent className="pl-2">
                       <Overview data={report.overview} />

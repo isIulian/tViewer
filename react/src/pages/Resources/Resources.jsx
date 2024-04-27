@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 
 import resourceService from "@/services/resourcesService.js";
 import { range } from "@/lib/utils";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { IconPlus } from "@tabler/icons-react";
 
 import { ResourceCard } from "@/pages/Resources/components/ResourceCard";
 import { Search } from "./components/Search";
@@ -96,8 +99,7 @@ const Resources = () => {
         }
 
         setPaginationPages(pages);
-      }
-      else {
+      } else {
         setPaginationPages([]);
       }
 
@@ -115,6 +117,12 @@ const Resources = () => {
         <div className="ml-auto flex items-center space-x-4">
           <Search setQuery={setQuery} />
           <ThemeSwitch />
+          <Link to={"/resource-add"} className="flex ml-2">
+            <Button size="sm" className="ml-auto flex h-8">
+              <IconPlus className="mr-2 h-4 w-4" />
+              Add Resource
+            </Button>
+          </Link>
         </div>
       </LayoutHeader>
 

@@ -39,6 +39,18 @@ const router = createBrowserRouter(
           }),
         },
         {
+          path: "/resource-add",
+          lazy: async () => ({
+            Component: (await import("@/pages/Resources/AddResource")).default,
+          }),
+        },
+        {
+          path: "/resource-edit/:id",
+          lazy: async () => ({
+            Component: (await import("@/pages/ResourceDetail/EditResource")).default,
+          }),
+        },
+        {
           path: "/tracks",
           lazy: async () => ({
             Component: (await import("@/pages/Tracks/Tracks")).default,

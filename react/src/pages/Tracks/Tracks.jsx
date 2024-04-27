@@ -24,8 +24,6 @@ export default function Tracks() {
 
   function handleRemove() {
     const deleteAndReloadTracks = async (id) => {
-      console.log(":::::delete row");
-      console.log(id);
       await trackService.deleteTrack(id);
       let persistedTracks = await trackService.getTracks();
       setTracks(persistedTracks);

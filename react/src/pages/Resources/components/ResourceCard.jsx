@@ -9,7 +9,7 @@ function ResourceCard({ resource }) {
         className="select-none xs:h-[250px] h-[216px] overflow-hidden"
       >
         <img
-          src={resource.fallbackCovers[0]}
+          src={resource.covers[0]}
           alt={resource.title}
           className="object-cover h-full w-full rounded-lg transition-all duration-300 ease-in-out hover:scale-110"
         />

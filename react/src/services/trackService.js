@@ -14,7 +14,7 @@ async function getTracks () {
 
         let trackDto = {
             id: track.id,
-            title: resource.name,
+            title: resource.title,
             status: resource.status,
             lastReadedPart: track.lastReadedPart,
             lastPart: null
@@ -37,6 +37,7 @@ async function getTrack (id) {
     }
     return tracks[0];
 }
+
 async function createTrack (track) {
     let storageData = dataStorage.getData();
     let tracks = storageData.tracks;
@@ -97,11 +98,19 @@ async function deleteTracks (ids) {
     dataStorage.persistData(storageData);
 }
 
+async function deleteTracksByResource (resourceId) {
+    let storageData = dataStorage.getData();
+    let tracks = storageData.tracks.filter(x => x.resourceId !== resourceId);
+    storageData.tracks = tracks;
+    dataStorage.persistData(storageData);
+}
+
 export default {
     getTracks,
     getTrack,
     createTrack,
     updateTrack,
     deleteTrack,
-    deleteTracks
+    deleteTracks,
+    deleteTracksByResource
 };

@@ -92,7 +92,7 @@ export function AddTrackForm() {
                 <SelectContent>
                   {untrackedResources.map((resource, index) => (
                     <SelectItem key={index} value={String(resource.id)}>
-                      {resource.name}
+                      {resource.title}
                     </SelectItem>
                   ))}
                 </SelectContent>

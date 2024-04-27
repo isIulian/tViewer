@@ -36,8 +36,9 @@ export function getDiffKeys (object1, object2) {
     const value2 = object2[key];
 
     const isObjects = isObject(value1) && isObject(value2);
+    const isArrays = Array.isArray(value1) && Array.isArray(value2);
 
-    if (isObjects) {
+    if (isObjects && !isArrays) {
       let diffKeys = getDiffKeys(value1, value2);
       if (diffKeys.length > 0) {
         let nestedDiffKeys = [];
@@ -45,6 +46,11 @@ export function getDiffKeys (object1, object2) {
           nestedDiffKeys.push(key + "." + nestedKey);
         }
         diffKeys = [...diffKeys, nestedDiffKeys];
+      }
+    }
+    else if (isArrays) {
+      if (!arraysEqual(value1, value2)) {
+        diffKeys.push(key);
       }
     }
     else if (value1 !== value2) {
@@ -57,4 +63,20 @@ export function getDiffKeys (object1, object2) {
 
 function isObject (object) {
   return object != null && typeof object === "object";
+}
+
+function arraysEqual (a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length !== b.length) return false;
+
+  // If you don't care about the order of the elements inside
+  // the array, you should sort both arrays here.
+  // Please note that calling sort on an array will modify that array.
+  // you might want to clone your array first.
+
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
 }

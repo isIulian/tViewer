@@ -24,7 +24,7 @@ const ResourceDetail = () => {
   if (resourceDetail === null) {
     return (
       <>
-        <p>ciao</p>
+        <p>No details</p>
       </>
     );
   }

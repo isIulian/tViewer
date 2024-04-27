@@ -1,3 +1,4 @@
+import { getDiffKeys } from "@/lib/utils";
 import dataStorage from "@/services/dataStorage";
 
 async function getTracks () {
@@ -15,7 +16,7 @@ async function getTracks () {
             id: track.id,
             title: resource.name,
             status: resource.status,
-            lastReadedPart: track.lastReadPart,
+            lastReadedPart: track.lastReadedPart,
             lastPart: null
         };
 
@@ -37,15 +38,63 @@ async function getTrack (id) {
     return tracks[0];
 }
 async function createTrack (track) {
-    console.log("add resource");
+    let storageData = dataStorage.getData();
+    let tracks = storageData.tracks;
+    let lastTrackId = 0;
+    tracks.map(track => {
+        const trackId = track.id;
+        lastTrackId = Math.max(lastTrackId, trackId);
+    });
+
+    let newTrack = {
+        id: lastTrackId + 1,
+        resourceId: track.resourceId,
+        lastReadedPart: track.lastReadedPart
+    };
+    tracks.push(newTrack);
+    storageData.tracks = tracks;
+    dataStorage.persistData(storageData);
 }
 
 async function updateTrack (track) {
-    console.log("update resource");
+    let persistedTrack = await getTrack(track.id);
+    if (persistedTrack === null) {
+        return;
+    }
+    var diffFields = getDiffKeys(track,persistedTrack);
+    if (diffFields.length > 0) {
+        for (const field of diffFields) {
+            persistedTrack[field] = track[field];
+        }
+
+        let storageData = dataStorage.getData();
+        let tracks = storageData.tracks;
+
+        tracks = tracks.filter(x => x.id !== persistedTrack.id); // delete old version
+        tracks.push(persistedTrack); // add the new version
+        storageData.tracks = tracks;
+        dataStorage.persistData(storageData);
+    }
 }
 
 async function deleteTrack (id) {
-    console.log("update resource");
+    let storageData = dataStorage.getData();
+    let tracks = storageData.tracks.filter(x => x.id !== id);
+    storageData.tracks = tracks;
+    dataStorage.persistData(storageData);
+}
+
+async function deleteTracks (ids) {
+    if (ids === undefined ||
+        ids === null ||
+        ids.length <= 0) {
+        return;
+    }
+
+    let storageData = dataStorage.getData();
+    let tracks = storageData.tracks.filter(x => !ids.includes(x.id));
+    storageData.tracks = tracks;
+    dataStorage.persistData(storageData);
 }
 
 export default {
@@ -53,5 +102,6 @@ export default {
     getTrack,
     createTrack,
     updateTrack,
-    deleteTrack
+    deleteTrack,
+    deleteTracks
 };

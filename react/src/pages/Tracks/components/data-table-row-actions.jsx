@@ -1,19 +1,16 @@
-import { IconDots } from "@tabler/icons-react"
-
-import { Button } from "@/components/ui/button"
+import { IconDots, IconEdit } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
-export function DataTableRowActions({
-  row,
-}) {
-  const task = row.original
+export function DataTableRowActions({ row }) {
+  const track = row.original;
 
   return (
     <DropdownMenu>
@@ -27,12 +24,14 @@ export function DataTableRowActions({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem>Edit</DropdownMenuItem>
-        <DropdownMenuSeparator />
         <DropdownMenuItem>
-          Delete
+          <Link to={"/tracks/edit" + "/" + track.id} className="flex w-full">
+            Edit
+          </Link>
         </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={() => track.deleteRow()}>Delete</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

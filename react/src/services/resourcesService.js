@@ -57,11 +57,28 @@ async function deleteResource (id) {
     console.log("update resource");
 }
 
+async function getUntrackedResources (type) {
+
+    let storageData = dataStorage.getData();
+    let resources = storageData.resources;
+    let tracks = storageData.tracks;
+    if (type !== undefined) {
+        resources = resources.filter((resource) => resource.type === type);
+    }
+
+    if (tracks.length > 0) {
+        let trackedResourcesId = tracks.map(x => x.resourceId);
+        resources = resources.filter(x => !trackedResourcesId.includes(x.id))
+    }
+    return resources;
+}
+
 export default {
     getResources,
     getPagedResources,
     getResource,
     createResource,
     updateResource,
-    deleteResource
+    deleteResource,
+    getUntrackedResources
 };

@@ -25,3 +25,36 @@ export function tryParseJson (jsonString) {
 
   return null;
 }
+
+
+export function getDiffKeys (object1, object2) {
+  const objKeys1 = Object.keys(object1);
+
+  let diffKeys = [];
+  for (var key of objKeys1) {
+    const value1 = object1[key];
+    const value2 = object2[key];
+
+    const isObjects = isObject(value1) && isObject(value2);
+
+    if (isObjects) {
+      let diffKeys = getDiffKeys(value1, value2);
+      if (diffKeys.length > 0) {
+        let nestedDiffKeys = [];
+        for (const nestedKey in diffKeys) {
+          nestedDiffKeys.push(key + "." + nestedKey);
+        }
+        diffKeys = [...diffKeys, nestedDiffKeys];
+      }
+    }
+    else if (value1 !== value2) {
+      diffKeys.push(key);
+    }
+  }
+
+  return diffKeys;
+}
+
+function isObject (object) {
+  return object != null && typeof object === "object";
+}

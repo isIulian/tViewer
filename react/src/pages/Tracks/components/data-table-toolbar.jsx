@@ -1,23 +1,21 @@
-import { IconX } from "@tabler/icons-react"
+import { Link } from "react-router-dom";
+import { IconPlus, IconX } from "@tabler/icons-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { DataTableViewOptions } from "./data-table-view-options";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { DataTableViewOptions } from "./data-table-view-options"
+import { statuses } from "../data/data";
+import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 
-import { statuses } from "../data/data"
-import { DataTableFacetedFilter } from "./data-table-faceted-filter"
-
-export function DataTableToolbar({
-  table,
-}) {
-  const isFiltered = table.getState().columnFilters.length > 0
+export function DataTableToolbar({ table }) {
+  const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
         <Input
           placeholder="Search..."
-          value={(table.getColumn("title")?.getFilterValue()) ?? ""}
+          value={table.getColumn("title")?.getFilterValue() ?? ""}
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
           }
@@ -42,6 +40,13 @@ export function DataTableToolbar({
         )}
       </div>
       <DataTableViewOptions table={table} />
+
+      <Link to="/tracks/add" className="flex ml-2">
+        <Button size="sm" className="ml-auto flex h-8">
+          <IconPlus className="mr-2 h-4 w-4" />
+          New Track
+        </Button>
+      </Link>
     </div>
-  )
+  );
 }

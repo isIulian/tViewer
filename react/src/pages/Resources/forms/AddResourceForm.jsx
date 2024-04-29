@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/use-toast";
 import { IconX } from "@tabler/icons-react";
 
 import { statuses } from "@/data/data";
@@ -113,15 +112,6 @@ export function AddResourceForm() {
 
     resourcesService.createResource(resource).then(function () {
       window.location.href = `${import.meta.env.VITE_BASE}resources/${type}` ;
-    });
-
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
     });
   }
 

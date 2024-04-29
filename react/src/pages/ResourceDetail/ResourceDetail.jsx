@@ -40,7 +40,7 @@ const ResourceDetail = () => {
     const deleteIncludedTracks = async (id) => {
       resourceService.deleteResource(id).then(function () {
         trackService.deleteTracksByResource(id).then(function () {
-          window.location.href = `/resources/${resourceDetail.resourceType.name}`;
+          window.location.href = `${import.meta.env.VITE_BASE}resources/${resourceDetail.resourceType.name}`;
         });
       });
     };

@@ -70,7 +70,7 @@ export function AddTrackForm() {
   function onSubmit(data) {
     data.resourceId = parseInt(data.resource, 10);
     trackService.createTrack(data).then(function () {
-      window.location.href = "/tracks";
+      window.location.href = `${import.meta.env.VITE_BASE}tracks`;
     });
   }
 

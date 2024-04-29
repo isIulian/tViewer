@@ -145,7 +145,7 @@ export function EditResourceForm() {
     };
 
     resourcesService.updateResource(resource).then(function () {
-      window.location.href = `/resource/${id}`;
+      window.location.href = `${import.meta.env.VITE_BASE}resource/${id}`;
     });
 
     toast({

@@ -112,7 +112,7 @@ export function AddResourceForm() {
     };
 
     resourcesService.createResource(resource).then(function () {
-      window.location.href = `/resources/${type}` ;
+      window.location.href = `${import.meta.env.VITE_BASE}resources/${type}` ;
     });
 
     toast({

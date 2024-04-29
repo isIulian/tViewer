@@ -58,7 +58,7 @@ export function EditTrackForm() {
     let trackId = parseInt(id, 10);
     data.id = trackId;
     trackService.updateTrack(data).then(function () {
-      window.location.href = "/tracks";
+      window.location.href = `${import.meta.env.VITE_BASE}tracks`;
     });
   }
 
